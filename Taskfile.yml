@@ -7,82 +7,82 @@ vars:
 tasks:
   # === Setup ===
   build:
-    desc: Build les containers Docker
+    desc: "Build les containers Docker"
     cmds:
       - docker compose build
 
   install:
-    desc: Install les dépendances Composer
+    desc: "Install les dépendances Composer"
     cmds:
       - docker compose run --rm {{.PHP_CONTAINER}} composer install
 
   up:
-    desc: Démarre les containers en arrière-plan
+    desc: "Démarre les containers en arrière-plan"
     cmds:
       - docker compose up -d
 
   down:
-    desc: Arrête les containers
+    desc: "Arrête les containers"
     cmds:
       - docker compose down
 
   # === Tests ===
   test:
-    desc: Lance les tests (optionnel: task test -- Day01)
+    desc: "Lance les tests (ex: task test -- Day01)"
     cmds:
       - docker compose run --rm {{.PHP_CONTAINER}} vendor/bin/phpunit {{if .CLI_ARGS}}tests/{{.CLI_ARGS}}{{end}}
 
-  test:coverage:
-    desc: Lance les tests avec couverture de code
+  test-coverage:
+    desc: "Lance les tests avec couverture de code"
     cmds:
       - docker compose run --rm -e XDEBUG_MODE=coverage {{.PHP_CONTAINER}} vendor/bin/phpunit --coverage-html coverage
 
   # === Qualité de code ===
   phpstan:
-    desc: Lance PHPStan
+    desc: "Lance PHPStan"
     cmds:
       - docker compose run --rm {{.PHP_CONTAINER}} vendor/bin/phpstan analyse
 
   cs-fix:
-    desc: Fixe le code style
+    desc: "Fixe le code style"
     cmds:
       - docker compose run --rm {{.PHP_CONTAINER}} vendor/bin/php-cs-fixer fix
 
   cs-check:
-    desc: Vérifie le code style (sans modifier)
+    desc: "Vérifie le code style (sans modifier)"
     cmds:
       - docker compose run --rm {{.PHP_CONTAINER}} vendor/bin/php-cs-fixer fix --dry-run --diff
 
   quality:
-    desc: Lance cs-check + phpstan + test
+    desc: "Lance cs-check + phpstan + test"
     cmds:
-      - task: cs-check
-      - task: phpstan
-      - task: test
+      - task cs-check
+      - task phpstan
+      - task test
 
   # === Accès aux containers ===
   shell:
-    desc: Ouvre un shell dans le container PHP
+    desc: "Ouvre un shell dans le container PHP"
     cmds:
       - docker compose run --rm {{.PHP_CONTAINER}} bash
 
   php:
-    desc: Lance une commande PHP (task php -- -v)
+    desc: "Lance une commande PHP (ex: task php -- -v)"
     cmds:
       - docker compose run --rm {{.PHP_CONTAINER}} php {{.CLI_ARGS}}
 
   composer:
-    desc: Lance une commande Composer (task composer -- require package)
+    desc: "Lance une commande Composer (ex: task composer -- require package)"
     cmds:
       - docker compose run --rm {{.PHP_CONTAINER}} composer {{.CLI_ARGS}}
 
   db:
-    desc: Ouvre psql dans le container PostgreSQL
+    desc: "Ouvre psql dans le container PostgreSQL"
     cmds:
       - docker compose exec {{.DB_CONTAINER}} psql -U orni -d orni_teach
 
   # === Exercices ===
   day:
-    desc: Lance les tests d'un jour spécifique (task day -- 01)
+    desc: "Lance les tests d'un jour spécifique (ex: task day -- 01)"
     cmds:
       - docker compose run --rm {{.PHP_CONTAINER}} vendor/bin/phpunit tests/Day{{.CLI_ARGS}}
