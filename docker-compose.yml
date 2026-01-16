@@ -1,0 +1,31 @@
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=orni_teach
+      - DB_USER=orni
+      - DB_PASSWORD=orni_password
+    stdin_open: true
+    tty: true
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: orni_teach
+      POSTGRES_USER: orni
+      POSTGRES_PASSWORD: orni_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
