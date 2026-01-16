@@ -22,6 +22,11 @@ return (new PhpCsFixer\Config())
         'strict_param' => true,
         'void_return' => true,
         'final_class' => true,
+        'braces_position' => [
+            'allow_single_line_empty_anonymous_classes' => true,
+            'allow_single_line_anonymous_functions' => true,
+        ],
+        'single_line_empty_body' => true,
     ])
     ->setFinder($finder)
     ->setRiskyAllowed(true)
