@@ -52,6 +52,57 @@ src/DayXX/              # Code à implémenter
 4. L'utilisateur soumet sa solution pour review
 5. Claude donne du feedback sans donner la solution directement
 
+### Précision sur les tests dans l'énoncé
+
+Chaque énoncé d'exercice doit **explicitement préciser** qui écrit les tests :
+
+- **"Les tests sont fournis"** : Claude fournit les tests, l'utilisateur doit les faire passer sans les modifier
+- **"Tu dois écrire les tests"** : L'utilisateur écrit ses propres tests, Claude les reviewera
+
+Dans les deux cas, **les tests doivent toujours passer** à la fin de l'exercice.
+
+### Autonomie de l'énoncé
+
+L'énoncé doit être **auto-suffisant** pour permettre la correction même si le contexte de la conversation est perdu. Il doit contenir :
+
+- Les critères d'acceptance clairs
+- Les contraintes techniques spécifiques à l'exercice
+- Les comportements attendus (cas nominaux et cas d'erreur)
+- Les règles métier à respecter
+
+Cela permet de corriger l'exercice dans une nouvelle conversation sans avoir besoin de contexte supplémentaire.
+
+### Statut d'un exercice
+
+Chaque fichier `exercises/day-XX.md` contient un statut après le titre :
+
+| Statut | Signification |
+|--------|---------------|
+| `> **Statut** : 📝 À faire` | Exercice créé, pas encore commencé |
+| `> **Statut** : 🚧 En cours` | L'utilisateur travaille dessus |
+| `> **Statut** : ✅ Corrigé et validé` | Exercice terminé et validé |
+
+### Gestion du statut
+
+- **À la création** : Mettre `📝 À faire`
+- **Quand l'utilisateur commence** : Mettre `🚧 En cours` (quand il pose des questions, demande des indices, etc.)
+- **À la correction réussie** : Mettre `✅ Corrigé et validé`
+
+### Correction d'exercice
+
+Quand l'utilisateur demande de **corriger** ou **valider** son exercice :
+
+1. **Lancer les vérifications** : `task quality` (cs-check + phpstan + tests)
+2. **Si tout passe** :
+   - Valider que l'exercice est réussi
+   - Mettre à jour le statut en `✅ Corrigé et validé`
+3. **Si des erreurs** :
+   - Indiquer **quelles** erreurs existent (tests qui échouent, erreurs PHPStan, etc.)
+   - **Ne PAS donner la solution** ni comment corriger
+   - L'utilisateur doit trouver par lui-même
+
+**Important** : La correction valide le travail de l'utilisateur, elle ne donne jamais la réponse.
+
 ---
 
 ## Contraintes techniques
