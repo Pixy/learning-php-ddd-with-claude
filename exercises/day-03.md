@@ -1,6 +1,6 @@
 # Jour 3 : Entity - User
 
-> **Statut** : 📝 À faire
+> **Statut** : ✅ Corrigé et validé
 
 ## Objectif
 
