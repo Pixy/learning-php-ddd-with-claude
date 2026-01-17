@@ -93,11 +93,17 @@ Chaque fichier `exercises/day-XX.md` contient un statut après le titre :
 Quand l'utilisateur demande de **corriger** ou **valider** son exercice :
 
 1. **Lancer les vérifications** : `task quality` (cs-check + phpstan + tests)
-2. **Si tout passe** :
+2. **Revue de code** : Lire le code implémenté par l'utilisateur et vérifier :
+   - Respect des contraintes de l'énoncé (immutabilité, patterns demandés, etc.)
+   - Pas de triche (code en dur, contournement des tests, etc.)
+   - Qualité du code (lisibilité, bonnes pratiques)
+   - Code mort ou inutile (variables non utilisées, opérations redondantes, etc.)
+3. **Si tout passe** :
    - Valider que l'exercice est réussi
    - Mettre à jour le statut en `✅ Corrigé et validé`
-3. **Si des erreurs** :
+4. **Si des erreurs ou problèmes** :
    - Indiquer **quelles** erreurs existent (tests qui échouent, erreurs PHPStan, etc.)
+   - Signaler les problèmes de qualité ou de triche détectés
    - **Ne PAS donner la solution** ni comment corriger
    - L'utilisateur doit trouver par lui-même
 
