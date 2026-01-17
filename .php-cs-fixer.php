@@ -27,6 +27,7 @@ return (new PhpCsFixer\Config())
             'allow_single_line_anonymous_functions' => true,
         ],
         'single_line_empty_body' => true,
+        'function_declaration' => ['closure_fn_spacing' => 'none'],
     ])
     ->setFinder($finder)
     ->setRiskyAllowed(true)
