@@ -119,6 +119,19 @@ Quand l'utilisateur demande de **corriger** ou **valider** son exercice :
 - **Qualité** : PHPStan level 8, PHP-CS-Fixer PSR-12
 - **Environnement** : Docker
 
+### Commandes à utiliser
+
+**IMPORTANT** : Toujours utiliser les commandes `task` du Taskfile pour lancer les outils de qualité et tests. Ne jamais appeler directement les binaires vendor.
+
+| Action | Commande |
+|--------|----------|
+| Tests complets | `task test` |
+| Tests d'un jour | `task day -- XX` |
+| PHPStan | `task phpstan` |
+| CS-Fixer (vérification) | `task cs-check` |
+| CS-Fixer (correction) | `task cs-fix` |
+| Qualité complète | `task quality` |
+
 ---
 
 ## Indices
