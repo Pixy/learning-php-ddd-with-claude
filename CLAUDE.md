@@ -88,6 +88,10 @@ Chaque fichier `exercises/day-XX.md` contient un statut après le titre :
 - **Quand l'utilisateur commence** : Mettre `🚧 En cours` (quand il pose des questions, demande des indices, etc.)
 - **À la correction réussie** : Mettre `✅ Corrigé et validé`
 
+**IMPORTANT** : À chaque changement de statut d'un exercice, mettre à jour **simultanément** :
+1. Le fichier `exercises/day-XX.md` (statut dans l'en-tête)
+2. Le tableau "Suivi des exercices" dans ce fichier CLAUDE.md
+
 ### Correction d'exercice
 
 Quand l'utilisateur demande de **corriger** ou **valider** son exercice :
@@ -139,6 +143,41 @@ Quand l'utilisateur demande de **corriger** ou **valider** son exercice :
 - Par défaut : aucun indice dans l'énoncé
 - L'utilisateur peut demander des indices s'il bloque
 - Les indices sont donnés de façon progressive (du plus vague au plus précis)
+
+---
+
+## Suivi des exercices
+
+| Jour | Thème | Statut |
+|------|-------|--------|
+| 01 | Value Object Email | ✅ Validé |
+| 02 | Value Object Money | ✅ Validé |
+| 03 | Entity User | ✅ Validé |
+| 04 | Repository in-memory | ✅ Validé |
+| 05 | Repository PostgreSQL | 📝 À faire |
+| 06 | DTOs | 📝 À faire |
+| 07 | Refactoring code spaghetti | 📝 À faire |
+| 08 | SOLID - Single Responsibility | 📝 À faire |
+| 09 | SOLID - Open/Closed | 📝 À faire |
+| 10 | SOLID - Liskov Substitution | 📝 À faire |
+| 11 | SOLID - Interface Segregation | 📝 À faire |
+| 12 | SOLID - Dependency Inversion | 📝 À faire |
+| 13 | Factory Pattern | 📝 À faire |
+| 14 | Strategy Pattern | 📝 À faire |
+| 15 | Use Case | 📝 À faire |
+| 16 | Ports & Adapters | 📝 À faire |
+| 17 | Domain Events | 📝 À faire |
+| 18 | Aggregates | 📝 À faire |
+| 19 | Specification Pattern | 📝 À faire |
+| 20 | CQRS intro | 📝 À faire |
+| 21 | Refactoring complet | 📝 À faire |
+| 22 | Query Builder | 📝 À faire |
+| 23 | N+1 Problem | 📝 À faire |
+| 24 | Pagination | 📝 À faire |
+| 25 | Transactions | 📝 À faire |
+| 26 | Optimisation requêtes | 📝 À faire |
+| 27 | Caching | 📝 À faire |
+| 28 | Projet final | 📝 À faire |
 
 ---
 
