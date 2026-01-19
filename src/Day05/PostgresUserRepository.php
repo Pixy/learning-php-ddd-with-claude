@@ -8,7 +8,6 @@ use App\Day01\Email;
 use App\Day03\User;
 use App\Day03\UserId;
 use App\Day04\UserRepositoryInterface;
-use Exception;
 use PDO;
 
 final class PostgresUserRepository implements UserRepositoryInterface
@@ -17,16 +16,16 @@ final class PostgresUserRepository implements UserRepositoryInterface
 
     public function save(User $newUser): void
     {
-
         $query = $this->pdo->prepare(
             'INSERT INTO users (id, email, name) VALUES (:id, :email, :name)
             ON CONFLICT(id) DO UPDATE 
             SET email = excluded.email, name = excluded.name'
         );
+
         $query->execute([
             'id' => (string) $newUser->id(),
             'email' => (string) $newUser->email(),
-            'name' => $newUser->name()
+            'name' => $newUser->name(),
         ]);
     }
 
@@ -92,7 +91,7 @@ final class PostgresUserRepository implements UserRepositoryInterface
 
     public function exists(Userid $id): bool
     {
-        $query = $this->pdo->prepare('SELECT * FROM users WHERE id = :id');
+        $query = $this->pdo->prepare('SELECT 1 FROM users WHERE id = :id');
         $query->execute(['id' => (string) $id]);
         $result = $query->fetchAll();
 
@@ -101,17 +100,13 @@ final class PostgresUserRepository implements UserRepositoryInterface
 
     public function createTable(): void
     {
-        try {
-            $query = $this->pdo->prepare(
-                'CREATE TABLE IF NOT EXISTS users (
+        $query = $this->pdo->prepare(
+            'CREATE TABLE IF NOT EXISTS users (
                     id UUID PRIMARY KEY,
                     email VARCHAR(255) UNIQUE NOT NULL,
                     name VARCHAR(255) NOT NULL
                 )'
-            );
-            $query->execute();
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
+        );
+        $query->execute();
     }
 }

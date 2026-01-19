@@ -234,12 +234,12 @@ final class PostgresUserRepositoryTest extends TestCase
     #[Test]
     public function create_table_is_idempotent(): void
     {
+        $this->expectNotToPerformAssertions();
+
         // createTable() was already called in setUp
         // Calling it again should not throw an error
         $this->repository->createTable();
         $this->repository->createTable();
-
-        $this->assertTrue(true); // If we got here, no exception was thrown
     }
 
     #[Test]

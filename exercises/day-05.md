@@ -1,6 +1,6 @@
 # Jour 5 : Repository PostgreSQL
 
-> **Statut** : 📝 À faire
+> **Statut** : ✅ Corrigé et validé
 
 ## Objectif
 

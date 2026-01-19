@@ -154,7 +154,7 @@ Quand l'utilisateur demande de **corriger** ou **valider** son exercice :
 | 02 | Value Object Money | ✅ Validé |
 | 03 | Entity User | ✅ Validé |
 | 04 | Repository in-memory | ✅ Validé |
-| 05 | Repository PostgreSQL | 📝 À faire |
+| 05 | Repository PostgreSQL | ✅ Validé |
 | 06 | DTOs | 📝 À faire |
 | 07 | Refactoring code spaghetti | 📝 À faire |
 | 08 | SOLID - Single Responsibility | 📝 À faire |
