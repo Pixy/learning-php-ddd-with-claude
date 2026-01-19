@@ -13,8 +13,6 @@ services:
       - DB_NAME=orni_teach
       - DB_USER=orni
       - DB_PASSWORD=orni_password
-    stdin_open: true
-    tty: true
 
   postgres:
     image: postgres:16-alpine
@@ -26,6 +24,11 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U orni -d orni_teach"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
 volumes:
   postgres_data:
